@@ -20,6 +20,7 @@ public class ApiTest {
 
     }
 
+
     @Test
     public void test() {
         List<Tickers> tickers = callApi();
