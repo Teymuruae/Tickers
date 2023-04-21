@@ -1,22 +1,33 @@
-plugins {
-    id 'java'
+plugins{
+    id 'java-library'
 }
-
-group 'org.example'
-version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation ('org.junit.jupiter:junit-jupiter-api:5.8.1',
-            'io.rest-assured:rest-assured:5.3.0',
-            'com.google.code.gson:gson:2.10.1'
-    )
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+compileTestJava{
+    options.encoding = 'UTF-8'
+
 }
 
-test {
-    useJUnitPlatform()
+dependencies {
+    testImplementation (
+            "com.codeborne:selenide:6.3.0",
+            "org.junit.jupiter:junit-jupiter:5.9.2",
+            'io.rest-assured:rest-assured:5.3.0'
+
+    )
+}
+
+test{
+    useJUnitPlatform() // для 5 Junit и UseJunit() для 4 версии
+}
+
+compileJava.options.encoding = 'UTF-8' // устанавливает кодировку для компилируемого кода
+javadoc.options.encoding = 'UTF-8' // устанавливает кодировку для генерируемой документации
+compileTestJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
